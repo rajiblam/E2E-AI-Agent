@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="41.013415">
-<testsuite name="e2e/SCRUM-3-login.spec.js" timestamp="2026-07-11T10:37:19.609Z" hostname="chromium" tests="1" failures="0" skipped="0" time="6.306" errors="0">
-<testcase name="SCRUM-3 login flow @smoke › user can open the login URL, enter valid credentials, and reach the dashboard" classname="e2e/SCRUM-3-login.spec.js" time="6.306">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="41.342249">
+<testsuite name="e2e/SCRUM-2-login.spec.js" timestamp="2026-07-11T10:57:45.018Z" hostname="chromium" tests="1" failures="0" skipped="0" time="6.729" errors="0">
+<testcase name="SCRUM-2 orangehrm login flow @smoke › user can open the orangehrm login page, sign in with valid credentials, and see the dashboard" classname="e2e/SCRUM-2-login.spec.js" time="6.729">
 </testcase>
 </testsuite>
 </testsuites>

@@ -28,13 +28,19 @@ Treat the supplied values as parameters for the workflow. The agent must not ass
    - If branch is not supplied, default to main.
    - If environment is not supplied, default to dev.
 
-2. Create or update the required markdown artifacts under utils/E2E-Agent.
+2. Read the Jira ticket content before any implementation work.
+   - The agent must open the Jira issue URL for the supplied ticket before generating artifacts or tests.
+   - The ticket content is the source of truth for the steps, acceptance criteria, and test plan.
+   - If the ticket cannot be read via API, open it in the browser, log in manually if necessary, and read the visible issue description/comments directly from the browser page.
+   - Do not skip this step or proceed from assumptions when the issue content is still unread.
+
+3. Create or update the required markdown artifacts under utils/E2E-Agent.
    - Jira steps artifact: utils/E2E-Agent/jira-steps-<ticket>.md
    - Test plan artifact: utils/E2E-Agent/test-plan-<ticket>.md
    - If the files already exist, update them in place rather than creating duplicates.
    - Use the Jira ticket name in the filenames so every ticket has its own artifact set.
 
-3. Extract and structure the Jira information.
+4. Extract and structure the Jira information.
    - First try the Jira API if access is available and returns valid data.
    - If API access fails, is unauthorized, or is unavailable, do not stop. Open the Jira issue in the browser, log in manually if needed, and read the visible issue description/comments directly from the browser page.
    - Use MCP/browser tools such as navigate, click, type, snapshot, wait, and browser actions to inspect the ticket content in real time.
@@ -76,6 +82,7 @@ Treat the supplied values as parameters for the workflow. The agent must not ass
    - Review git status and diff.
    - Commit the accepted changes if the repository is writable.
    - Push the current branch to the supplied githubRepo if credentials are available.
+   - Verify the push result with git evidence such as `git log -1 --oneline` and `git ls-remote --heads origin <branch>` when possible.
    - If push is blocked, report the exact reason instead of pretending it succeeded.
 
 ## Folder structure to follow
