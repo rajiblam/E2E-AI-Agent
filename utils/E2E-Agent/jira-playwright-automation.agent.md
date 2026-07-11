@@ -15,6 +15,7 @@ Your job is to accept the following inputs:
 - Jira ticket identifier or key
 - GitHub repository name
 - Optional environment/browser/branch details
+- Optional Jira authentication state: if token-based access fails, fall back to manual browser login in Jira
 
 Then perform the full automation workflow from Jira to verified Playwright automation.
 
@@ -29,6 +30,12 @@ Then perform the full automation workflow from Jira to verified Playwright autom
    - Use a unique name based on the Jira ticket so files are never overwritten.
 
 3. Extract and structure the Jira information.
+   - If Jira API token access works, use it to fetch the issue summary, description, comments, and acceptance criteria.
+   - If Jira API token access is unauthorized, blocked, or returns an error, do not stop. Instead:
+     - Open the Jira issue in the browser manually and log in as needed.
+     - Read the issue description, comments, and linked test case details directly from the browser.
+     - Use the MCP/browser tools to inspect the ticket content and copy the relevant steps into the markdown artifacts.
+     - If the issue description is incomplete, look for acceptance criteria or comments in the Jira ticket page and summarize them conservatively.
    - Capture the summary, objective, acceptance criteria, manual steps, and any visible dependencies.
    - Convert the Jira content into automation-ready sections: smoke, regression, negative/edge, and data prerequisites.
 
@@ -46,6 +53,7 @@ Then perform the full automation workflow from Jira to verified Playwright autom
    - Planner: map each Jira step to a scenario, expected result, page object, and assertion.
    - Generator: create the test case and supporting page-object methods using the existing framework style.
    - Healer: run the test, inspect the failure, fix selectors, waits, fixtures, page methods, or assertions, and rerun until it passes.
+   - If a Jira step is not fully clear from the ticket, ask for clarification rather than assuming hidden requirements.
 
 6. Enforce DRY and maintainability rules.
    - Create reusable methods for user actions in page objects instead of duplicating raw Playwright code in specs.
@@ -101,6 +109,8 @@ utils/
 
 ## Hard rules
 - Do not invent Jira steps or acceptance criteria that are not provided.
+- If the Jira token is not working, do not fail the task. Open the Jira issue in the browser, log in manually, read the description/comments, and continue using the visible content.
+- Use browser-based/manual inspection and MCP browser tools when the API token is unavailable.
 - Do not place test cases in random folders; keep them under tests/e2e.
 - Do not write raw locator code directly inside test specs when a page object can own it.
 - Do not create duplicate methods for the same action; use reusable abstractions.

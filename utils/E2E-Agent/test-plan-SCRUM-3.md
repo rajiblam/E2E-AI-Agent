@@ -6,18 +6,18 @@
 - Target Framework: Playwright + Page Object Model
 
 ## Scope
-Automate the valid-credential login scenario for the Practice Test Automation app, including successful authentication, verification of the logged-in state, and logout confirmation.
+Automate the valid-credential login flow based on the Jira description by opening the login URL, entering the provided credentials, and asserting the dashboard is shown.
 
 ## Recommended Automation Scenarios
 ### Smoke
-- Scenario 1: User logs in with valid credentials and lands on the successful login state.
-- Scenario 2: User logs out successfully and returns to the login page.
+- Scenario 1: User opens the login page and signs in with valid credentials.
+- Scenario 2: User lands on the dashboard and sees the expected text after successful authentication.
 
 ### Regression
-- Scenario 3: The login page still shows the expected heading and controls after logout.
+- Scenario 3: The login page remains accessible when the sign-in flow is repeated.
 
 ### Negative / Edge Cases
-- Scenario 4: Invalid credentials still surface the expected error message and keep the user on the login page.
+- Scenario 4: Invalid credentials still show a login error and prevent dashboard access.
 
 ## Mapping to Framework Components
 - Page Objects: pages/loginPage.js, pages/base/basePage.js

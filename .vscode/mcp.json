@@ -13,6 +13,14 @@
         "ATLASSIAN_API_TOKEN": "${env:ATLASSIAN_API_TOKEN}",
         "ATLASSIAN_EMAIL": "${env:ATLASSIAN_EMAIL}"
       }
+    },
+    "playwright-test": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "playwright",
+        "run-test-mcp-server"
+      ]
     }
   }
 }

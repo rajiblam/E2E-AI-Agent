@@ -6,21 +6,19 @@
 - Source: https://arpanlama2024.atlassian.net/browse/SCRUM-3
 
 ## Objective
-Validate that a user can successfully log in with valid credentials and then complete the expected post-login flow without errors.
+Validate the login flow using the visible Jira ticket content and convert it into a Playwright automation scenario.
 
 ## Extracted Steps
-1. Open the login page for the Practice Test Automation app.
-2. Enter a valid username and password.
-3. Submit the login form.
-4. Verify that the application redirects to the logged-in success page or displays the authenticated state.
-5. Verify that the logout option is visible and that the user can log out cleanly.
+1. Open URL: https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+2. Enter Username: Admin
+3. Enter Password: admin123
+4. Validate that the page shows the Dashboard text after login.
 
 ## Acceptance Criteria
-- User is able to authenticate with valid credentials.
-- The application shows evidence of a successful login state.
-- The user can log out and return to the login page state.
+- User can open the login page.
+- User can sign in with the provided valid credentials.
+- The dashboard page is shown after successful authentication.
 
 ## Notes
-- This is a high-priority smoke scenario.
-- It depends on the login page and standard credentials from the test environment.
-- It uses existing framework fixtures and page objects.
+- The Jira description contained the concrete login steps and expected validation text.
+- This is a smoke scenario that maps well to the existing Playwright login test structure.
