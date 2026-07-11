@@ -13,7 +13,8 @@ class LoginPage extends BasePage {
     this.emailError = page.locator('div#error');
     this.orangeHrmError = page.locator('div.oxd-alert-content');
     this.userMenu = page.locator('button#menu-toggle');
-    this.logoutOption = page.getByRole('link', { name: 'Logout' });
+    this.profileMenuButton = page.locator('span.oxd-userdropdown-tab').first();
+    this.logoutOption = page.locator('a[href*="logout"], a:has-text("Logout"), a:has-text("Log out")').first();
   }
 
   async open() {
@@ -42,6 +43,10 @@ class LoginPage extends BasePage {
     await expect(this.page.locator('body')).toContainText(expectedText, { timeout: 15_000 });
   }
 
+  async expectLoginTextVisible(expectedText = 'Login') {
+    await expect(this.page.locator('body')).toContainText(expectedText, { timeout: 15_000 });
+  }
+
   async expectInvalidCredentialsErrorVisible(expectedText = 'Invalid credentials') {
     await expect(this.orangeHrmError).toContainText(expectedText, { timeout: 15_000 });
   }
@@ -59,6 +64,12 @@ class LoginPage extends BasePage {
   async logout(testInfo) {
     await this.logoutButton.click();
     await this.takeScreenshot('logout-successful', testInfo);
+  }
+
+  async logoutOrangeHrm() {
+    await this.profileMenuButton.click();
+    await expect(this.logoutOption).toBeVisible({ timeout: 10_000 });
+    await this.logoutOption.click();
   }
 }
 

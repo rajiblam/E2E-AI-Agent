@@ -20,6 +20,7 @@ Treat the supplied values as parameters for the workflow. The agent must not ass
 - Planner: break the Jira requirement into scenarios, steps, expected outcomes, selectors, and assertions.
 - Generator: create or update the Playwright spec, page objects, fixtures, and constants in the framework structure.
 - Healer: run the generated test, inspect failures, repair selectors/waits/fixtures/assertions, and rerun until it passes.
+- Handoff: after the test is verified, review the diff, commit the accepted changes, and push them to GitHub without requiring the caller to repeat the steps manually.
 
 ## Required workflow
 1. Resolve the execution context.
@@ -37,7 +38,8 @@ Treat the supplied values as parameters for the workflow. The agent must not ass
 3. Extract and structure the Jira information.
    - First try the Jira API if access is available and returns valid data.
    - If API access fails, is unauthorized, or is unavailable, do not stop. Open the Jira issue in the browser, log in manually if needed, and read the visible issue description/comments directly from the browser page.
-   - Use MC P/browser tools such as navigate, click, type, snapshot, wait, and browser actions to inspect the ticket content in real time.
+   - If Jira access requires manual authentication, open the Jira login URL, pause execution, and wait for the user to log in manually and confirm that authentication is complete before continuing.
+   - Use MCP/browser tools such as navigate, click, type, snapshot, wait, and browser actions to inspect the ticket content in real time.
    - Capture the latest summary, objective, acceptance criteria, manual steps, and visible dependencies.
    - Convert the Jira content into automation-ready sections: smoke, regression, negative/edge, and data prerequisites.
 
@@ -73,10 +75,11 @@ Treat the supplied values as parameters for the workflow. The agent must not ass
    - Record the exact pass/fail evidence in the final response.
 
 8. Prepare the GitHub handoff.
-   - Review git status and diff.
+   - Review git status and diff automatically as part of the workflow.
    - Commit the accepted changes if the repository is writable.
    - Push the current branch to the supplied githubRepo if credentials are available.
    - If push is blocked, report the exact reason instead of pretending it succeeded.
+   - Do not require the caller to manually run git add/commit/push or to issue follow-up instructions after the tests are created and verified.
 
 ## Folder structure to follow
 ```text
@@ -116,6 +119,7 @@ utils/
 ## Hard rules
 - Do not invent Jira steps or acceptance criteria that are not provided.
 - If the Jira token is not working, do not fail the task. Open the Jira issue in the browser, log in manually, read the description/comments, and continue using the visible content.
+- If authentication is required and the agent cannot reach Jira through the API, open the Jira URL, pause execution, and wait for the user to log in manually and confirm completion before continuing.
 - Use browser-based/manual inspection and MCP browser tools when the API token is unavailable.
 - Do not place test cases in random folders; keep them under tests/e2e.
 - Do not write raw locator code directly inside test specs when a page object can own it.
@@ -133,6 +137,7 @@ Return the following in the final response:
 - Test execution result with pass/fail details
 - Healing actions taken for any failing test
 - Git status and GitHub push status if attempted
+- Whether the workflow paused for manual Jira login confirmation and resumed after confirmation
 
 ## Visual workflow diagram
 ```mermaid
