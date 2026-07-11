@@ -1,0 +1,8 @@
+{
+  "validKeywords":   ["JavaScript", "Playwright", "NodeJS"],
+  "invalidKeywords": ["####", "   ", "ZZZZNONEXISTENT"],
+  "users": {
+    "dev":     { "email": "dev@example.com",     "password": "DevPass123!" },
+    "staging": { "email": "staging@example.com", "password": "StgPass123!" }
+  }
+}

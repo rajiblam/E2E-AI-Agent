@@ -1,0 +1,18 @@
+{
+  "servers": {
+    "jira": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-atlassian"
+      ],
+      "env": {
+        "ATLASSIAN_URL": "${env:ATLASSIAN_URL}",
+        "ATLASSIAN_USERNAME": "${env:ATLASSIAN_USERNAME}",
+        "ATLASSIAN_API_TOKEN": "${env:ATLASSIAN_API_TOKEN}",
+        "ATLASSIAN_EMAIL": "${env:ATLASSIAN_EMAIL}"
+      }
+    }
+  }
+}

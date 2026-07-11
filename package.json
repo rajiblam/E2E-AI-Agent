@@ -1,0 +1,42 @@
+{
+  "name": "javascriptplaywrightframeworkai",
+  "version": "1.0.0",
+  "description": "Playwright POM Framework for JavaScript - Complete Robust Guide",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "posttest": "playwright show-report reports/html",
+    "test:open-report": "playwright test && playwright show-report reports/html",
+    "test:dev": "ENV=dev playwright test",
+    "test:qa": "ENV=qa playwright test",
+    "test:staging": "ENV=staging playwright test",
+    "test:prod": "ENV=prod playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:headed": "playwright test --headed",
+    "test:debug": "PWDEBUG=1 playwright test",
+    "report": "playwright show-report reports/html",
+    "lint": "eslint 'tests/**/*.js' 'pages/**/*.js' 'utils/**/*.js' 'fixtures/**/*.js'",
+    "lint:fix": "eslint --fix 'tests/**/*.js' 'pages/**/*.js' 'utils/**/*.js' 'fixtures/**/*.js'",
+    "format": "prettier --write .",
+    "codegen": "playwright codegen"
+  },
+  "keywords": [
+    "playwright",
+    "pom",
+    "testing",
+    "javascript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.2",
+    "@faker-js/faker": "^10.4.0",
+    "@playwright/test": "1.61.1",
+    "allure-playwright": "^3.7.1",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.2.1",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.3"
+  }
+}

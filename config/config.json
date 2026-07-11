@@ -1,0 +1,24 @@
+{
+  "credentials": {
+    "student": {
+      "username": "student",
+      "password": "Password123"
+    },
+    "invalidUser": {
+      "username": "wrongUser",
+      "password": "wrongPassword"
+    }
+  },
+  "messages": {
+    "loginPageTitle": "Test Login",
+    "successHeading": "Logged In Successfully",
+    "logoutButton": "Log out",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "submitButton": "Submit",
+    "invalidUsernameMessage": "Your username is invalid!"
+  },
+  "urls": {
+    "loggedInSuccessPattern": "practicetestautomation.com/logged-in-successfully"
+  }
+}

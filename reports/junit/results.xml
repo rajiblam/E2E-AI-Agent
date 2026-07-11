@@ -1,0 +1,13 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="38.581091">
+<testsuite name="e2e/SCRUM-3-login.spec.js" timestamp="2026-07-11T08:44:25.927Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.442" errors="0">
+<testcase name="SCRUM-3 login flow @smoke › user can log in with valid credentials, verify the logged-in state, and log out" classname="e2e/SCRUM-3-login.spec.js" time="3.442">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/e2e-SCRUM-3-login-SCRUM-3--dd033-logged-in-state-and-log-out-chromium/attachments/login-successful-7b734c5074b230de935d40123b65cb66ba88ec0b.png]]
+
+[[ATTACHMENT|../../test-results/e2e-SCRUM-3-login-SCRUM-3--dd033-logged-in-state-and-log-out-chromium/attachments/logout-successful-1d5e718d06ce5339dd3e7b2010cfb4620bb43ed7.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
